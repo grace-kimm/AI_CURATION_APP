@@ -33,7 +33,13 @@ class AICurationList extends StatelessWidget {
       'icon': 'assets/autodraw.png',
       'url': 'https://www.autodraw.com/',
     },
-    
+    {
+      'name': 'Capcut',
+      'description': '내 숏츠 영상을 매력적으로 편집해요.',
+      'flag': null,
+      'icon': 'assets/capcut.png',
+      'url': 'https://www.capcut.com/',
+    },
     {
       'name': 'SciSpace',
       'description': '논문 검색/번역에 특화 되었어요.',

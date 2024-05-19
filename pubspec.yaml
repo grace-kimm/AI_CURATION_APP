@@ -62,6 +62,9 @@ flutter:
     - assets/chatgpt.png
     - assets/deepl.png
     - assets/lilys.jpeg
+    - assets/capcut.png
+    - assets/autodraw.png
+    - assets/scispace.png
   fonts:
   - family: Pretendard
     fonts:
