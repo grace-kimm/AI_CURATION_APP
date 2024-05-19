@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'widgets/ai_curation_list.dart';
 
 void main() {
-  runApp(AICurationApp());
+  runApp(const AICurationApp());
 }
 
 class AICurationApp extends StatelessWidget {
+  const AICurationApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,12 +19,14 @@ class AICurationApp extends StatelessWidget {
           bodyMedium: TextStyle(fontFamily: 'Pretendard'),
         ),
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +43,20 @@ class HomePage extends StatelessWidget {
       ),
       body: const Padding(
         padding: EdgeInsets.all(16.0),
-        child: AICurationList(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '클릭 하면 AI 서비스를 사용할 수 있어요.',
+              style: TextStyle(
+                fontFamily: 'Pretendard',
+                fontSize: 16,
+              ),
+            ),
+            SizedBox(height: 16),
+            Expanded(child: AICurationList()),
+          ],
+        ),
       ),
     );
   }
