@@ -5,14 +5,15 @@ class AICurationTile extends StatelessWidget {
   final String icon;
   final String name;
   final String description;
-  final String flag;
+  final String? flag; // 'flag'를 nullable로 변경
   final String url;
 
-  const AICurationTile({super.key, 
+  const AICurationTile({
+    super.key,
     required this.icon,
     required this.name,
     required this.description,
-    required this.flag,
+    this.flag, // 'flag'를 선택 사항으로 설정
     required this.url,
   });
 
@@ -74,10 +75,11 @@ class AICurationTile extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 16.0),
-              Text(
-                flag,
-                style: const TextStyle(fontSize: 24.0), // 국기 이모지 크기
-              ),
+              if (flag != null) // flag가 null이 아닌 경우에만 표시
+                Text(
+                  flag!,
+                  style: const TextStyle(fontSize: 24.0), // 국기 이모지 크기
+                ),
             ],
           ),
         ),

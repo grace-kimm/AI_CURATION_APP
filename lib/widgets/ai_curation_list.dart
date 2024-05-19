@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'ai_curation_tile.dart';
 
 class AICurationList extends StatelessWidget {
-  const AICurationList({super.key});
+  const AICurationList({Key? key}) : super(key: key);
 
-  final List<Map<String, String>> aiServices = const [
+  final List<Map<String, String?>> aiServices = const [
     {
       'name': 'Chat GPT',
       'description': '모든 주제로 대화할 수 있어요.',
@@ -26,6 +26,21 @@ class AICurationList extends StatelessWidget {
       'icon': 'assets/lilys.jpeg',
       'url': 'https://www.lilys.com/',
     },
+    {
+      'name': 'Auto Draw',
+      'description': '내가 대충 그린 그림을 멋지게 그려줘요.',
+      'flag': null,
+      'icon': 'assets/autodraw.png',
+      'url': 'https://www.autodraw.com/',
+    },
+    
+    {
+      'name': 'SciSpace',
+      'description': '논문 검색/번역에 특화 되었어요.',
+      'flag': null,
+      'icon': 'assets/scispace.png',
+      'url': 'https://typeset.io/',
+    },
   ];
 
   @override
@@ -35,11 +50,11 @@ class AICurationList extends StatelessWidget {
       itemBuilder: (context, index) {
         final service = aiServices[index];
         return AICurationTile(
-          key: ValueKey(service['name']), // 고유한 키를 생성하여 전달합니다.
+          key: ValueKey(service['name']),
           icon: service['icon']!,
           name: service['name']!,
           description: service['description']!,
-          flag: service['flag']!,
+          flag: service['flag'],
           url: service['url']!,
         );
       },
