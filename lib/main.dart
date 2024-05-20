@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart'; // provider 패키지 임포트
+import 'package:provider/provider.dart';
 import 'widgets/ai_curation_list.dart';
 
 void main() {
@@ -7,7 +7,7 @@ void main() {
 }
 
 class LanguageProvider with ChangeNotifier {
-  String _language = 'KOR';
+  String _language = 'ENG'; // 기본 언어를 영어로 설정
 
   String get language => _language;
 
@@ -18,7 +18,7 @@ class LanguageProvider with ChangeNotifier {
 }
 
 class AICurationApp extends StatelessWidget {
-  const AICurationApp({Key? key}) : super(key: key);
+  const AICurationApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +42,12 @@ class AICurationApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final languageProvider = Provider.of<LanguageProvider>(context);
-    final isKorean = languageProvider.language == 'KOR';
+    final isEnglish = languageProvider.language == 'ENG';
 
     return Scaffold(
       appBar: AppBar(
@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget {
         centerTitle: false, // 왼쪽 정렬
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0), // 마진 추가
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             child: ToggleButtons(
               borderColor: Colors.grey,
               selectedBorderColor: Colors.blue,
@@ -70,7 +70,7 @@ class HomePage extends StatelessWidget {
               selectedColor: Colors.blue,
               color: Colors.grey,
               borderRadius: BorderRadius.circular(8),
-              isSelected: [!isKorean, isKorean],
+              isSelected: [isEnglish, !isEnglish],
               onPressed: (index) {
                 if (index == 0) {
                   languageProvider.setLanguage('ENG');
@@ -92,9 +92,28 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: AICurationList(),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Consumer<LanguageProvider>(
+              builder: (context, languageProvider, child) {
+                return Text(
+                  languageProvider.language == 'ENG'
+                      ? 'You can use AI services by clicking.'
+                      : '클릭 하면 AI 서비스를 사용할 수 있어요.',
+                  style: const TextStyle(
+                    fontFamily: 'Pretendard',
+                    fontSize: 16,
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 16),
+            const Expanded(child: AICurationList()),
+          ],
+        ),
       ),
     );
   }

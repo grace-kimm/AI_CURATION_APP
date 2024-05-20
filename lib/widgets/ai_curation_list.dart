@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart'; // provider 패키지 임포트
+import 'package:provider/provider.dart';
 import 'ai_curation_tile.dart';
 import '../main.dart';
 
