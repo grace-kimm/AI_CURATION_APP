@@ -13,6 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Setup Flutter SDK
+        uses: flutter-actions/setup-flutter@v3
+        with:
+          channel: stable
+          version: 3.0.2
+      - name: Install dependencies
+        run: flutter pub get
       - run: flutter build web
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
