@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'widgets/ai_curation_list.dart';
-import 'widgets/youtube_recommendation_list.dart';
+import 'widgets/youtube_recommendation_list.dart' as youtube;
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -108,7 +108,7 @@ class HomePage extends StatelessWidget {
                       child: TabBarView(
                         children: [
                           AICurationList(),
-                          YoutubeRecommendationList(),
+                          youtube.YoutubeRecommendationList(), // 수정된 부분
                         ],
                       ),
                     ),
