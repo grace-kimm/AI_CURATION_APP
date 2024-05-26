@@ -33,7 +33,7 @@ class AICurationList extends StatelessWidget {
         'description_kor': '모든 주제로 대화할 수 있어요.',
         'flag': '🇰🇷',
         'icon': 'assets/lilys.jpeg',
-        'url': 'https://www.lilys.com/',
+        'url': 'https://lilys.ai/',
       },
       {
         'name': 'Auto Draw',
